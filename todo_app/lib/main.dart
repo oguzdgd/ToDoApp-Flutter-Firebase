@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/auth/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:todo_app/auth/main_page.dart';
 import 'package:todo_app/widgets/task_widget.dart';
 import 'firebase_options.dart';
 

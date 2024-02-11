@@ -36,6 +36,9 @@ class _Task_WidgetState extends State<Task_Widget> {
                 children: [
                   //image
                   images(),
+                  SizedBox(
+                    width: 20,
+                  ),
                   //title andd subtitle
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,12 +46,55 @@ class _Task_WidgetState extends State<Task_Widget> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('title'),
-                          Text('subtitle'),
+                          SizedBox(height: 25),
+                          Text(
+                            'title',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            'subtitle',
+                            style: TextStyle(
+                                fontSize: 16, color: Colors.grey.shade400),
+                          ),
+                          Row(
+                            children: [
+                              ElevatedButton(onPressed: () {},
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Icon(Icons.access_time,size: 20,color: Colors.white,),
+                                      Text("time",style: TextStyle(color: Colors.white),),
+                                    ],
+                                  ),
+                                style: ButtonStyle(
+                                  fixedSize: MaterialStateProperty.all(Size(100, 30)),
+                                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                                  minimumSize: MaterialStateProperty.all(Size(25,25))
+                                ),
+                                ),
+                              SizedBox(width: 10,),
+                              ElevatedButton(onPressed: () {},
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                  children: [
+                                    Icon(Icons.edit,size: 20,color: Colors.white,),
+                                    Text("edit",style: TextStyle(color: Colors.white),),
+                                  ],
+                                ),
+                                style: ButtonStyle(
+                                    fixedSize: MaterialStateProperty.all(Size(100, 30)),
+                                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                                    minimumSize: MaterialStateProperty.all(Size(25, 25)),
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       ),
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
@@ -60,14 +106,14 @@ class _Task_WidgetState extends State<Task_Widget> {
 
   Container images() {
     return Container(
-                width: 100,
-                height: 130,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  image: DecorationImage(
-                    image: AssetImage("images/table_tennis.jpg"),
-                  ),
-                ),
-              );
+      width: 100,
+      height: 130,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        image: DecorationImage(
+          image: AssetImage("images/table_tennis.jpg"),
+        ),
+      ),
+    );
   }
 }
