@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/auth/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:todo_app/screen/add_note_screen.dart';
+import 'package:todo_app/screen/home.dart';
 import 'package:todo_app/widgets/task_widget.dart';
 import 'firebase_options.dart';
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Task_Widget(),
+      home: Add_Note_Screen(),
     );
   }
 }

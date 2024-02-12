@@ -8,13 +8,14 @@ class Task_Widget extends StatefulWidget {
 }
 
 class _Task_WidgetState extends State<Task_Widget> {
+  bool isChecked = false;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+    return
+
+      Padding(
+          padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
           child: Container(
             width: double.infinity,
             height: 130,
@@ -40,67 +41,70 @@ class _Task_WidgetState extends State<Task_Widget> {
                     width: 20,
                   ),
                   //title andd subtitle
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 25),
-                          Text(
-                            'title',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w400),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            'subtitle',
-                            style: TextStyle(
-                                fontSize: 16, color: Colors.grey.shade400),
-                          ),
-                          Row(
-                            children: [
-                              ElevatedButton(onPressed: () {},
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Icon(Icons.access_time,size: 20,color: Colors.white,),
-                                      Text("time",style: TextStyle(color: Colors.white),),
-                                    ],
-                                  ),
-                                style: ButtonStyle(
-                                  fixedSize: MaterialStateProperty.all(Size(100, 30)),
-                                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                                  minimumSize: MaterialStateProperty.all(Size(25,25))
-                                ),
-                                ),
-                              SizedBox(width: 10,),
-                              ElevatedButton(onPressed: () {},
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 10),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'title',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w400),
+                            ),
+                            Checkbox(value: isChecked, onChanged: (value) {
+                              isChecked =! isChecked;
+                            },),
+                          ],
+                        ),
+                        Text(
+                          'subtitle',
+                          style: TextStyle(
+                              fontSize: 16, color: Colors.grey.shade400),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ElevatedButton(onPressed: () {},
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
-                                    Icon(Icons.edit,size: 20,color: Colors.white,),
-                                    Text("edit",style: TextStyle(color: Colors.white),),
+                                    Icon(Icons.access_time,size: 20,color: Colors.white,),
+                                    Text("time",style: TextStyle(color: Colors.white),),
                                   ],
                                 ),
-                                style: ButtonStyle(
-                                    fixedSize: MaterialStateProperty.all(Size(100, 30)),
-                                    backgroundColor: MaterialStateProperty.all(Colors.blue),
-                                    minimumSize: MaterialStateProperty.all(Size(25, 25)),
-                                ),
+                              style: ButtonStyle(
+                                fixedSize: MaterialStateProperty.all(Size(100, 30)),
+                                backgroundColor: MaterialStateProperty.all(Colors.blue),
+                                minimumSize: MaterialStateProperty.all(Size(25,25))
                               ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
+                              ),
+                            SizedBox(width: 10,),
+                            ElevatedButton(onPressed: () {},
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  Icon(Icons.edit,size: 20,color: Colors.white,),
+                                  Text("edit",style: TextStyle(color: Colors.white),),
+                                ],
+                              ),
+                              style: ButtonStyle(
+                                  fixedSize: MaterialStateProperty.all(Size(100, 30)),
+                                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                                  minimumSize: MaterialStateProperty.all(Size(25, 25)),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-        ),
-      ),
     );
   }
 
