@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:todo_app/screen/add_note_screen.dart';
 import 'package:todo_app/widgets/task_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,7 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: Visibility(
         visible: show,
         child: FloatingActionButton(
-          onPressed: () {  },
+          onPressed: () {
+            Navigator.push(context,MaterialPageRoute(builder:(context) {
+              return Add_Note_Screen();
+            },));
+          },
           child: Icon(Icons.add,size: 40,),
         ),
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Add_Note_Screen extends StatefulWidget {
-  const Add_Note_Screen({super.key});
+class Edit_Screen extends StatefulWidget {
+  const Edit_Screen({super.key});
 
   @override
-  State<Add_Note_Screen> createState() => _Add_Note_ScreenState();
+  State<Edit_Screen> createState() => _Edit_ScreenState();
 }
 
 FocusNode _focusNodeTitle = FocusNode();
@@ -15,7 +15,7 @@ final subtitle = TextEditingController();
 
 int pictureIndex = 0;
 
-class _Add_Note_ScreenState extends State<Add_Note_Screen> {
+class _Edit_ScreenState extends State<Edit_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +89,7 @@ class _Add_Note_ScreenState extends State<Add_Note_Screen> {
                   border: Border.all(
                       width: 2,
                       color:
-                          pictureIndex == index ? Colors.amber : Colors.grey)),
+                      pictureIndex == index ? Colors.amber : Colors.grey)),
               width: 140,
               margin: EdgeInsets.all(8),
               child: Column(
@@ -116,7 +116,7 @@ class _Add_Note_ScreenState extends State<Add_Note_Screen> {
           style: TextStyle(fontSize: 18, color: Colors.black),
           decoration: InputDecoration(
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               hintText: ' title',
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -146,7 +146,7 @@ class _Add_Note_ScreenState extends State<Add_Note_Screen> {
           style: TextStyle(fontSize: 18, color: Colors.black),
           decoration: InputDecoration(
               contentPadding:
-                  EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+              EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               hintText: ' subtitle',
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
