@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:todo_app/data/firestore_data.dart';
 import 'package:todo_app/screen/add_note_screen.dart';
+import 'package:todo_app/widgets/stream_widget.dart';
 import 'package:todo_app/widgets/task_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,7 +13,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-bool show =true;
+bool show = true;
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -21,31 +24,40 @@ class _HomeScreenState extends State<HomeScreen> {
         visible: show,
         child: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context,MaterialPageRoute(builder:(context) {
-              return Add_Note_Screen();
-            },));
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) {
+                return Add_Note_Screen();
+              },
+            ));
           },
-          child: Icon(Icons.add,size: 40,),
+          child: Icon(
+            Icons.add,
+            size: 40,
+          ),
         ),
       ),
       body: SafeArea(
         child: NotificationListener<UserScrollNotification>(
-          onNotification: (notification){
-            if(notification.direction ==ScrollDirection.forward){
-              setState(() {
-                show = true;
-              });
-            } if(notification.direction ==ScrollDirection.reverse){
-              setState(() {
-                show = false;
-              });
-            }return true;
-          },
-          child: ListView.builder(itemBuilder: (context, index) {
-          return Task_Widget();
-          },
-            itemCount: 10,
-          ),
+            onNotification: (notification) {
+              if (notification.direction == ScrollDirection.forward) {
+                setState(() {
+                  show = true;
+                });
+              }
+              if (notification.direction == ScrollDirection.reverse) {
+                setState(() {
+                  show = false;
+                });
+              }
+              return true;
+            },
+            child: Column(
+              children: [
+                StreamNote(false),
+                Text("isDone"),
+                StreamNote(true),
+              ],
+            ),
         ),
       ),
     );

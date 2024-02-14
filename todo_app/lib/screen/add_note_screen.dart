@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/data/firestore_data.dart';
 
 class Add_Note_Screen extends StatefulWidget {
   const Add_Note_Screen({super.key});
@@ -49,6 +50,7 @@ class _Add_Note_ScreenState extends State<Add_Note_Screen> {
       children: [
         ElevatedButton(
           onPressed: () {
+            Firestore_Datasource().AddNote(title.text, subtitle.text, pictureIndex);
             Navigator.pop(context);
           },
           style: ElevatedButton.styleFrom(

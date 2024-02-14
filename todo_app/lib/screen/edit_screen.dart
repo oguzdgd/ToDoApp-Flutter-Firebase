@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/data/firestore_data.dart';
+
+import '../model/notes_model.dart';
 
 class Edit_Screen extends StatefulWidget {
-  const Edit_Screen({super.key});
+  Note _note;
+  Edit_Screen(this._note,{super.key});
 
   @override
   State<Edit_Screen> createState() => _Edit_ScreenState();
 }
 
-FocusNode _focusNodeTitle = FocusNode();
-FocusNode _focusNodeSubtitle = FocusNode();
-
-final title = TextEditingController();
-final subtitle = TextEditingController();
-
-int pictureIndex = 0;
 
 class _Edit_ScreenState extends State<Edit_Screen> {
+  FocusNode _focusNodeTitle = FocusNode();
+  FocusNode _focusNodeSubtitle = FocusNode();
+
+  TextEditingController? title;
+  TextEditingController? subtitle;
+
+  int pictureIndex = 0;
+
+  @override
+  void initState() {
+    title=TextEditingController(text: widget._note.title);
+    subtitle=TextEditingController(text: widget._note.subtitle);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,12 +61,14 @@ class _Edit_ScreenState extends State<Edit_Screen> {
       children: [
         ElevatedButton(
           onPressed: () {
+            Firestore_Datasource().UpdateNote(widget._note.id,
+                title!.text, subtitle!.text, pictureIndex);
             Navigator.pop(context);
           },
           style: ElevatedButton.styleFrom(
               backgroundColor: Colors.amber, minimumSize: Size(170, 50)),
           child: Text(
-            "Add Task",
+            "Save",
             style: TextStyle(color: Colors.white),
           ),
         ),
